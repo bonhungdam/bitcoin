@@ -24,6 +24,69 @@ _bitcoin_tx() {
             return 0
             ;;
     esac
+_bitcoin_tx() {
+    local cur prev words=() cword
+    local bitcoin_tx
+
+    # save and use original argument to invoke bitcoin-tx for -help
+    # it might not be in $PATH
+    bitcoin_tx="$1"
+
+    COMPREPLY=()
+    _get_comp_words_by_ref -n =: cur prev words cword
+
+    case "$cur" in
+        load=*:*)
+            cur="${cur#load=*:}"
+            _filedir
+            return 0
+            ;;
+        *=*)	# prevent attempts to complete other arguments
+            return 0
+            ;;
+    esac
+_bitcoin_tx() {
+    local cur prev words=() cword
+    local bitcoin_tx
+
+    # save and use original argument to invoke bitcoin-tx for -help
+    # it might not be in $PATH
+    bitcoin_tx="$1"
+
+    COMPREPLY=()
+    _get_comp_words_by_ref -n =: cur prev words cword
+
+    case "$cur" in
+        load=*:*)
+            cur="${cur#load=*:}"
+            _filedir
+            return 0
+            ;;
+        *=*)	# prevent attempts to complete other arguments
+            return 0
+            ;;
+    esac
+_bitcoin_tx() {
+    local cur prev words=() cword
+    local bitcoin_tx
+
+    # save and use original argument to invoke bitcoin-tx for -help
+    # it might not be in $PATH
+    bitcoin_tx="$1"
+
+    COMPREPLY=()
+    _get_comp_words_by_ref -n =: cur prev words cword
+
+    case "$cur" in
+        load=*:*)
+            cur="${cur#load=*:}"
+            _filedir
+            return 0
+            ;;
+        *=*)	# prevent attempts to complete other arguments
+            return 0
+            ;;
+    esac
 
     if [[ "$cword" == 1 || ( "$prev" != "-create" && "$prev" == -* ) ]]; then
         # only options (or an uncompletable hex-string) allowed
